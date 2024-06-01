@@ -1,0 +1,162 @@
+/* Define color variables */
+:root {
+    --charcoal: #264653ff;
+    --persian-green: #2a9d8fff;
+    --saffron: #e9c46aff;
+    --sandy-brown: #f4a261ff;
+    --burnt-sienna: #e76f51ff;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(to right, var(--persian-green) 50%, var(--sandy-brown) 50%);
+}
+
+.container {
+    text-align: center;
+    background: var(--charcoal);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+    height: 500px; /* Set a fixed height */
+    width: 350px;
+    overflow: hidden; /* Hide any overflow content */
+    box-sizing: border-box; /* Ensure padding and border are included in the dimensions */
+}
+
+.input-container {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column; /* Arrange child elements vertically */
+    height: 100px; /* Set a fixed height */
+    width: 300px; /* Set a fixed width */
+    overflow: hidden; /* Hide any content exceeding the fixed height */
+}
+
+.flip-container {
+    margin: 20px auto;
+    padding: 40px;
+    border: 2px solid var(--saffron);
+    border-radius: 10px;
+    background: var(--charcoal);
+}
+
+.coin {
+    width: 150px;
+    height: 150px;
+    position: relative;
+    perspective: 1000px;
+    margin: 20px auto;
+}
+
+.side {
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--saffron);
+    border-radius: 50%;
+    font-size: 24px;
+    line-height: 150px;
+}
+
+.heads {
+    background: var(--saffron);
+    color: var(--charcoal);
+}
+
+.tails {
+    background: var(--burnt-sienna);
+    color: var(--charcoal);
+    transform: rotateY(180deg);
+}
+
+@keyframes flip {
+    0% { transform: rotateY(0); }
+    100% { transform: rotateY(1800deg); }
+}
+
+.flipping {
+    animation: flip 2s;
+}
+
+button {
+    margin: 10px;
+    padding: 5px 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--persian-green);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--burnt-sienna);
+}
+
+#settings-button {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background: transparent;
+    border: none;
+}
+
+.settings-icon {
+    width: 24px;
+    height: 24px;
+}
+
+#settings-button:hover .settings-icon {
+    filter: brightness(0.8);
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.popup-content {
+    background-color: var(--charcoal);
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid var(--saffron);
+    width: 80%;
+    max-width: 400px;
+    border-radius: 10px;
+    text-align: left;
+    color: white;
+}
+
+.close-button {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: var(--burnt-sienna);
+    text-decoration: none;
+    cursor: pointer;
+}
