@@ -50,11 +50,11 @@ document.addEventListener('DOMContentLoaded', () => {
             coin.classList.remove('flipping');
             if (isHeads) {
                 coin.style.transform = 'rotateY(0deg)';
-                result.textContent = `Heads wins: ${headsOutcome || 'Heads wins'}`;
+                result.textContent = `${headsOutcome || 'Heads wins'}`;
                 logFlip('Heads'); // Log flip result to flip history
             } else {
                 coin.style.transform = 'rotateY(180deg)';
-                result.textContent = tailsOutcome ? `Tails wins: ${tailsOutcome}` : 'Tails wins';
+                result.textContent = tailsOutcome ? `${tailsOutcome}` : 'Tails wins';
                 logFlip('Tails'); // Log flip result to flip history
             }
         }, 2000);
