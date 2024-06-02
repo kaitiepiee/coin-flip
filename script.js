@@ -70,7 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
         closePopup();
     });
 
-    // Close the popup if user clicks outside of it
     window.addEventListener('click', (event) => {
         if (event.target == popup) {
             closePopup();
