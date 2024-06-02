@@ -1,15 +1,14 @@
-// script.js
 document.addEventListener('DOMContentLoaded', () => {
     const coin = document.getElementById('coin');
     const result = document.getElementById('result');
     const flipButton = document.getElementById('flip-button');
-    const resetButton = document.getElementById('reset-button');
     const settingsButton = document.getElementById('settings-button');
     const popup = document.getElementById('popup');
     const closeButton = document.querySelector('.close-button');
     const saveButton = document.getElementById('save-button');
     const headsPopupInput = document.getElementById('heads-popup');
     const tailsPopupInput = document.getElementById('tails-popup');
+    const historyList = document.getElementById('history-list');
 
     let headsOutcome = '';
     let tailsOutcome = '';
@@ -27,13 +26,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to log flip result to flip history
     function logFlip(result) {
         flipHistory.push(result);
+        updateHistoryList();
     }
 
-    // Function to display flip history
-    function displayFlipHistory() {
-        console.log("Flip History:");
+    // Function to update the history list
+    function updateHistoryList() {
+        historyList.innerHTML = '';
         flipHistory.forEach((result, index) => {
-            console.log(`Flip ${index + 1}: ${result}`);
+            const listItem = document.createElement('li');
+            listItem.textContent = `Flip ${index + 1}: ${result}`;
+            historyList.appendChild(listItem);
         });
     }
 
@@ -48,20 +50,14 @@ document.addEventListener('DOMContentLoaded', () => {
             coin.classList.remove('flipping');
             if (isHeads) {
                 coin.style.transform = 'rotateY(0deg)';
-                result.textContent = `${headsOutcome || 'Heads wins'}`;
+                result.textContent = `Heads wins: ${headsOutcome || 'Heads wins'}`;
                 logFlip('Heads'); // Log flip result to flip history
             } else {
                 coin.style.transform = 'rotateY(180deg)';
-                result.textContent = tailsOutcome ? `${tailsOutcome}` : 'Tails wins';
+                result.textContent = tailsOutcome ? `Tails wins: ${tailsOutcome}` : 'Tails wins';
                 logFlip('Tails'); // Log flip result to flip history
             }
         }, 2000);
-    });
-
-    resetButton.addEventListener('click', () => {
-        // Reset the result text and coin rotation
-        result.textContent = '';
-        coin.style.transform = 'rotateY(0deg)';
     });
 
     settingsButton.addEventListener('click', showPopup);
@@ -80,7 +76,4 @@ document.addEventListener('DOMContentLoaded', () => {
             closePopup();
         }
     });
-
-    // Add event listener for window unload to display flip history
-    window.addEventListener('unload', displayFlipHistory);
 });

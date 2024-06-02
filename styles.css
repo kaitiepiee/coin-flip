@@ -30,6 +30,7 @@ body {
     width: 350px;
     overflow: hidden; /* Hide any overflow content */
     box-sizing: border-box; /* Ensure padding and border are included in the dimensions */
+    position: relative; /* Position relative to contain the absolute positioned settings button */
 }
 
 .input-container {
@@ -108,8 +109,8 @@ button:hover {
 
 #settings-button {
     position: absolute;
-    top: 2px;
-    right: 2px;
+    top: 10px;
+    right: 10px;
     background: transparent;
     border: none;
 }
@@ -159,4 +160,23 @@ button:hover {
     color: var(--burnt-sienna);
     text-decoration: none;
     cursor: pointer;
+}
+
+/* Flip history styles */
+#history-container {
+    text-align: left;
+    margin-top: 20px;
+}
+
+#flip-history {
+    list-style-type: none;
+    padding: 0;
+}
+
+#flip-history li {
+    background: var(--sandy-brown);
+    color: var(--charcoal);
+    margin: 5px 0;
+    padding: 5px 10px;
+    border-radius: 5px;
 }
