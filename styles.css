@@ -1,130 +1,106 @@
-/* Define color variables */
+/* === Base Theme === */
 :root {
-    --charcoal: #264653ff;
-    --persian-green: #2a9d8fff;
-    --saffron: #e9c46aff;
-    --sandy-brown: #f4a261ff;
-    --burnt-sienna: #e76f51ff;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    --charcoal: #1c1c1c;
+    --gold: #d4af37;
+    --emerald: #2a9d8f;
+    --sandy: #f4a261;
+    --white: #ffffff;
+  }
+  
+  body {
     margin: 0;
-    background: linear-gradient(to right, var(--persian-green) 50%, var(--sandy-brown) 50%);
-}
-
-.container {
-    text-align: center;
-    background: var(--charcoal);
-    color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
-    margin: 0 auto;
-    height: 500px; /* Set a fixed height */
-    width: 350px;
-    overflow: hidden; /* Hide any overflow content */
-    box-sizing: border-box; /* Ensure padding and border are included in the dimensions */
-    position: relative; /* Position relative to contain the absolute positioned settings button */
-}
-
-.input-container {
-    margin-bottom: 20px;
+    padding: 0;
+    height: 100vh;
     display: flex;
-    flex-direction: column; /* Arrange child elements vertically */
-    height: 100px; /* Set a fixed height */
-    width: 300px; /* Set a fixed width */
-    overflow: hidden; /* Hide any content exceeding the fixed height */
-}
-
-.flip-container {
-    margin: 20px auto;
-    padding: 40px;
-    border: 2px solid var(--saffron);
-    border-radius: 10px;
-    background: var(--charcoal);
-}
-
-.coin {
-    width: 150px;
-    height: 150px;
-    position: relative;
-    perspective: 1000px;
-    margin: 20px auto;
-}
-
-.side {
-    width: 150px;
-    height: 150px;
-    position: absolute;
-    backface-visibility: hidden;
+    flex-direction: column;
+    background: linear-gradient(to right, var(--emerald), var(--sandy));
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: var(--white);
+  }
+  
+  .main-wrapper {
+    flex: 1;
     display: flex;
-    justify-content: center;
     align-items: center;
-    border: 1px solid var(--saffron);
+    justify-content: center;
+  }
+  
+  .container {
+    position: relative;
+    text-align: center;
+    padding: 30px;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  }
+  
+  h1 {
+    margin-top: 0;
+  }
+  
+  .coin {
+    width: 150px;
+    height: 150px;
+    margin: 20px auto;
     border-radius: 50%;
-    font-size: 24px;
-    line-height: 150px;
-}
-
-.heads {
-    background: var(--saffron);
+    background-color: var(--gold);
     color: var(--charcoal);
-}
-
-.tails {
-    background: var(--burnt-sienna);
-    color: var(--charcoal);
-    transform: rotateY(180deg);
-}
-
-@keyframes flip {
-    0% { transform: rotateY(0); }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    font-weight: bold;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+  }
+  
+  .coin.flipping {
+    animation: coin-flip 1s ease-in-out;
+  }
+  
+  @keyframes coin-flip {
+    0% { transform: rotateY(0deg); }
     100% { transform: rotateY(1800deg); }
-}
-
-.flipping {
-    animation: flip 2s;
-}
-
-button {
-    margin: 10px;
-    padding: 5px 5px;
+  }
+  
+  button {
+    margin-top: 10px;
+    padding: 8px 16px;
     border: none;
-    border-radius: 5px;
-    background-color: var(--persian-green);
+    border-radius: 8px;
+    background-color: var(--emerald);
     color: white;
     font-size: 16px;
     cursor: pointer;
-}
-
-button:hover {
-    background-color: var(--burnt-sienna);
-}
-
-#settings-button {
+    transition: background-color 0.3s ease;
+    font-family: inherit;
+  }
+  
+  button:hover {
+    background-color: var(--gold);
+    color: var(--charcoal);
+  }
+  
+  #settings-button {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 15px;
+    right: 15px;
     background: transparent;
     border: none;
-}
-
-.settings-icon {
+    z-index: 2;
+  }
+  
+  .settings-icon {
     width: 24px;
     height: 24px;
-}
-
-#settings-button:hover .settings-icon {
-    filter: brightness(0.8);
-}
-
-.popup {
+    filter: brightness(1.1);
+  }
+  
+  .popup {
     display: none;
     position: fixed;
     z-index: 1;
@@ -132,50 +108,102 @@ button:hover {
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-.popup-content {
-    background-color: var(--charcoal);
-    margin: 15% auto;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+  
+  .popup-content {
+    background-color: #34495e;
+    margin: 10% auto;
     padding: 20px;
-    border: 1px solid var(--saffron);
-    width: 80%;
+    border: 1px solid var(--gold);
+    width: 90%;
     max-width: 400px;
     border-radius: 10px;
-    text-align: left;
     color: white;
-}
-
-.close-button {
-    color: white;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close-button:hover,
-.close-button:focus {
-    color: var(--burnt-sienna);
-    text-decoration: none;
-    cursor: pointer;
-}
-
-#history-container {
-    text-align: left;
-    margin-top: 20px;
-}
-
-#flip-history {
+    max-height: 80vh;
+    overflow-y: auto;
+    font-family: 'Outfit', sans-serif;
+  }
+  
+  .input-container input {
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: none;
+  }
+  
+  #history-list {
     list-style-type: none;
     padding: 0;
-}
-
-#flip-history li {
-    background: var(--sandy-brown);
+    margin: 0;
+    max-height: 150px;
+    overflow-y: auto;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+  }
+  
+  #history-list li {
+    background: var(--gold);
     color: var(--charcoal);
-    margin: 5px 0;
-    padding: 5px 10px;
+    padding: 6px 10px;
+    margin: 5px;
     border-radius: 5px;
-}
+    font-size: 14px;
+  }
+  
+  #stats {
+    margin-top: 10px;
+    font-weight: bold;
+    color: var(--gold);
+  }
+  
+  footer {
+    text-align: center;
+    padding: 15px 0;
+    color: white;
+    font-size: 14px;
+  }
+  
+  /* === Final Girl Mode === */
+  body.finalgirl {
+    background: linear-gradient(to right, #1e0037, #0b001e);
+    font-family: 'Pacifico', cursive;
+  }
+  
+  body.finalgirl .container {
+    border: 1px solid hotpink;
+    background: rgba(255, 105, 180, 0.1);
+  }
+  
+  body.finalgirl .coin {
+    background-color: hotpink;
+    color: white;
+    box-shadow: 0 0 25px hotpink;
+    font-size: 36px;
+  }
+  
+  body.finalgirl button {
+    background-color: deeppink;
+  }
+  
+  body.finalgirl button:hover {
+    background-color: magenta;
+    color: white;
+  }
+  
+  body.finalgirl .popup-content {
+    border: 2px dashed hotpink;
+    background-color: #2e003e;
+  }
+  
+  body.finalgirl footer {
+    color: hotpink;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-shadow: 0 0 5px hotpink;
+  }
+  
+  body.finalgirl h1 {
+    text-shadow: 0 0 8px hotpink;
+    color: hotpink;
+  }  

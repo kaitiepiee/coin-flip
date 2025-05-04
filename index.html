@@ -1,44 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coin Flip App</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="coin.png" type="image/png"> 
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Coin Flip App</title>
+  <link rel="icon" href="coin.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <div class="main-wrapper">
     <div class="container">
+      <button id="settings-button">
+        <img src="settings-icon.png" alt="Settings" class="settings-icon" />
+      </button>
+      <div class="flip-container">
         <h1>Coin Flip</h1>
-        <div class="flip-container">
-            <div class="coin" id="coin">
-                <div class="side heads">Heads</div>
-                <div class="side tails">Tails</div>
-            </div>
-            <div id="result"></div>
-            <button id="settings-button">
-                <img src="settings-icon.png" alt="Settings" class="settings-icon">
-            </button>
-        </div>
+        <div class="coin" id="coin">?</div>
         <button id="flip-button">Flip Coin</button>
-    
+      </div>
     </div>
+  </div>
 
-    <!-- Popup -->
-    <div id="popup" class="popup">
-        <div class="popup-content">
-            <span class="close-button">&times;</span>
-            <h2>Define Outcomes</h2>
-            <div class="input-container">
-                <label for="heads-popup">If Heads, then:</label>
-                <input type="text" id="heads-popup" placeholder="Heads wins">
-                <label for="tails-popup"> If Tails, then:</label>
-                <input type="text" id="tails-popup" placeholder="Tails wins">
-            </div>
-            <button id="save-button">Save</button>
-        </div>
+  <!-- Popup -->
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      <span class="close-button">&times;</span>
+      <h2>Define Outcomes</h2>
+      <div class="input-container">
+        <label for="heads-popup">If Heads, then:</label>
+        <input type="text" id="heads-popup" placeholder="Heads wins" /></br>
+        <label for="tails-popup">If Tails, then:</label>
+        <input type="text" id="tails-popup" placeholder="Tails wins" />
+      </div>
+      <button id="save-button">Save</button>
+      <hr />
+      <h3>Flip History</h3>
+      <p id="stats">Heads: 0 | Tails: 0</p>
+      <ul id="history-list"></ul>
     </div>
+  </div>
 
-    <script src="script.js"></script>
+  <!-- Footer -->
+  <footer>made by the final girl 👩🏻‍💻</footer>
+  <script src="script.js"></script>
 </body>
 </html>
